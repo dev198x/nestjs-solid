@@ -1,0 +1,46 @@
+@BASE_URL_DEV=http://localhost:9000
+@BASE_URL={{BASE_URL_DEV}}
+
+#### https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+# @name login
+curl -X 'POST' \
+  '{{BASE_URL}}/auth/login' \
+  -H 'Content-Type: application/json'
+  -d '{
+    "requestId": "{{$guid}}",
+    "randomInt": {{$randomInt 10 999}},
+    "yesterday":  {{$timestamp -2 d}},
+    "tomorrow":  {{$timestamp 2 d}},
+    "customDate": "{{$datetime 'YYYY-MM-DD'}}",
+    "datetime": "{{$datetime iso8601 -1 d}}",
+    "email": "u1@yopmail.com",
+    "password": "123456"
+  }'
+
+# {
+#   requestId: 'ed74aef7-91f8-482b-9a36-f67af9412ddf',
+#   randomInt: 881,
+#   yesterday: 1695975154,
+#   tomorrow: 1696320754,
+#   customDate: '2023-10-01',
+#   datetime: '2023-09-30T08:12:34.633Z',
+#   email: 'u1@yopmail.com',
+#   password: '123456'
+# }
+
+@JWT = {{login.response.body.accessToken}}
+
+
+####
+curl -X 'GET' \
+  '{{BASE_URL}}' 
+####
+curl -X 'POST' \
+  '{{BASE_URL}}/orders' \
+  -d '{
+    "productId": 1
+  }'
+
+####
+curl -X 'GET' \
+  '{{BASE_URL}}/LSP/orders/pricing/1' 
