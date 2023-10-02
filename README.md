@@ -57,6 +57,13 @@ $ yarn run test:e2e
 # test coverage
 $ yarn run test:cov
 ```
+## Developers
+```bash
+# run container from image
+docker run --name c-mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+# attache in a running container
+docker exec -it c-mysql sh
+```
 
 ## Support
 
