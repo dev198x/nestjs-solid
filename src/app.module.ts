@@ -10,9 +10,24 @@ import { OrdersModule } from './modules/SRP/orders/orders.module';
 import { LSPOrdersModule } from './modules/LSP/orders/orders.module';
 import { PokemonService } from './pokemon/pokemon.service';
 import { LoggerMiddleware } from './logger.middleware';
+import { LoggerModule } from 'nestjs-pino';
 
 @Module({
-  imports: [ProductsModule, OrdersModule, LSPOrdersModule],
+  imports: [
+    ProductsModule,
+    OrdersModule,
+    LSPOrdersModule,
+    LoggerModule.forRoot({
+      pinoHttp: {
+        transport: {
+          target: 'pino-pretty',
+          options: {
+            singleLine: true,
+          },
+        },
+      },
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService, PokemonService],
 })

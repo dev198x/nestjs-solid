@@ -3,3 +3,6 @@ How to use the NestJS Logger (plus Pino setup)
     new module
         nest g service Pokemon
         touch src/logger.middleware.ts
+        npm i nestjs-pino pino-http
+        npm i pino-pretty
+        npm i uuid
