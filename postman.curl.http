@@ -43,4 +43,4 @@ curl -X 'POST' \
 
 ####
 curl -X 'GET' \
-  '{{BASE_URL}}/LSP/orders/pricing/1' 
+  '{{BASE_URL}}/LSP/orders/pricing/2' 
