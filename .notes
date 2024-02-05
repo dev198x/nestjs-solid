@@ -2,3 +2,4 @@ How to use the NestJS Logger (plus Pino setup)
     https://www.tomray.dev/nestjs-logging#expose-error-object-in-http-log
     new module
         nest g service Pokemon
+        touch src/logger.middleware.ts
