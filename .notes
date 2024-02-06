@@ -1,0 +1,19 @@
+NestJS tracing with Open Telemetry: A how-to guide with examples
+    https://www.tomray.dev/nestjs-open-telemetry#how-to-set-up-automatic-tracing-in-nestjs
+    npm install @opentelemetry/sdk-node @opentelemetry/sdk-trace-base
+
+    touch src/tracing.ts
+    npm install @opentelemetry/instrumentation-express @opentelemetry/instrumentation-http
+
+    npm install @opentelemetry/instrumentation-nestjs-core
+
+    npm install @opentelemetry/semantic-conventions @opentelemetry/resources
+
+    touch docker-compose.yml
+
+    docker compose up -d
+
+    npm install @opentelemetry/exporter-jaeger
+
+
+
