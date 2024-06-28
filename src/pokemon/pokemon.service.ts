@@ -6,7 +6,7 @@ export class PokemonService {
 
   findAll() {
     // this.logger.log(`Retrieve all Pokemon`);
-    this.logger.error(
+    this.logger.debug(
       { id: `retrieve-all-pokemon-error` },
       `Retrieve all Pokemon`,
     ); // object passed in first argument

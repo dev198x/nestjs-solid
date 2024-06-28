@@ -11,6 +11,7 @@ import { LSPOrdersModule } from './modules/LSP/orders/orders.module';
 import { PokemonService } from './pokemon/pokemon.service';
 import { LoggerMiddleware } from './logger.middleware';
 import { LoggerModule } from 'nestjs-pino';
+import { CustomProvideModule } from './my-modules/custom-provide/custom-provide.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { LoggerModule } from 'nestjs-pino';
         },
       },
     }),
+    CustomProvideModule,
   ],
   controllers: [AppController],
   providers: [AppService, PokemonService],
