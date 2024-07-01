@@ -20,7 +20,8 @@ class CustomCatService implements ABSCat {
   providers: [
     // { provide: CatService, useValue: mockCatsService },
     // { provide: CatService, useValue: new CustomCatService() },
-    { provide: CatService, useClass: CustomCatService },
+    // { provide: CatService, useClass: CustomCatService },
+    CatService,
 
     DogService,
   ],

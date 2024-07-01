@@ -12,6 +12,7 @@ import { PokemonService } from './pokemon/pokemon.service';
 import { LoggerMiddleware } from './logger.middleware';
 import { LoggerModule } from 'nestjs-pino';
 import { CustomProvideModule } from './my-modules/custom-provide/custom-provide.module';
+import { AppMyService } from './app.my-service';
 
 @Module({
   imports: [
@@ -31,7 +32,7 @@ import { CustomProvideModule } from './my-modules/custom-provide/custom-provide.
     CustomProvideModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PokemonService],
+  providers: [AppService, PokemonService, AppMyService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
