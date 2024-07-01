@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
-import { CatService } from './cat-service';
+import { ABSCat, CatService } from './cat-service';
 import { Cat } from './interfaces/cat.interface';
+import { DogService } from './dog-service';
 
 const mockCatsService = {
   // mock implementation
@@ -9,14 +10,20 @@ const mockCatsService = {
   },
 };
 
-class CustomCatService {
-  findAll() {
-    return [1, 2, 3];
+class CustomCatService implements ABSCat {
+  findAll(): Cat[] {
+    return [{ name: 'cname1', age: 2, breed: 'bb1' }];
   }
 }
 
 @Module({
-  providers: [{ provide: CatService, useValue: new CustomCatService() }],
+  providers: [
+    // { provide: CatService, useValue: mockCatsService },
+    // { provide: CatService, useValue: new CustomCatService() },
+    { provide: CatService, useClass: CustomCatService },
+
+    DogService,
+  ],
   exports: [CatService],
 })
 export class CustomProvideModule {}
