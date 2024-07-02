@@ -1,6 +1,5 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
-import { AppService } from './app.service';
 import { CatService } from './my-modules/custom-provide/cat-service';
 
 @Injectable()
@@ -9,8 +8,9 @@ export class AppMyService implements OnModuleInit {
   constructor(private readonly moduleRef: ModuleRef) {}
 
   onModuleInit() {
-    // this.service = this.moduleRef.get(CatService);
-    this.service = this.moduleRef.get(CatService, { strict: false });
+    this.service = this.moduleRef.get<CatService>(CatService, {
+      strict: false,
+    });
     console.log('onModuleInit', this.service); // false
   }
 
