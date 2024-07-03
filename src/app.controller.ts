@@ -36,6 +36,7 @@ export class AppController {
   callback() {
     return this.catService.doMainFlow({ myId: '1000', name: 'Dat' }, (myId) => {
       console.log(`AppController, ${myId}`);
+      return true;
     });
   }
 }

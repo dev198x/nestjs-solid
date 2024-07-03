@@ -6,7 +6,7 @@ export abstract class ABSCat {
 }
 
 export interface MyCallbackInterface {
-  (myId: string): void;
+  (myId: string): boolean;
 }
 
 @Injectable()
@@ -26,7 +26,11 @@ export class CatService implements ABSCat {
     )}`;
     console.log('🚀 ~ CatService ~ doMainFlow ~ result:', result);
     const { myId } = payload;
-    callback(myId);
+    const rs = callback(myId);
+    if (rs) {
+      // delete
+    }
+    // throw
     return result;
   }
 }
